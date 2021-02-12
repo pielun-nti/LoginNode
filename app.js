@@ -7,10 +7,11 @@ var sassMiddleware = require('node-sass-middleware');
 const session = require('express-session');
 const dotenv = require('dotenv')
 dotenv.config({path: './config/config.env.yaml'})
-var indexRouter = require('./routes/index');
-var loginRouter = require('./routes/login');
 
 var app = express();
+
+var indexRouter = require('./routes/index');
+var loginRouter = require('./routes/login');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
