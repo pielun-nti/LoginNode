@@ -33,9 +33,9 @@ describe('/login', () => {
     it('should sign in user provided it has a correct request body', (done) => {
       request.post('/login')
         .type('form')
-        .send({username: 'jens', password: 'Secret123'})
+        .send({username: 'pierre', password: 'Secret123'})
         .expect(302)
-        .expect('Location', '/topsecret')
+        .expect('Location', '/home')
         .end((err, res) => {
           if (err) throw err;
           return done();
