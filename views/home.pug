@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  main.container
+    h1 Home sidan
+
+    //- Den enkla och mycket fungerande lösningen
+    form(action="/logout", method="post")
+      button(type="submit") Logout med POST till /logout
+
+    //- Den komplicerade lösningen som använder en DELETE request, men kräver js och axios
+    button#logout Logout med DELETE till /login
+
+block script 
+  script(src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')
+  script(src='/javascripts/logout.js')
