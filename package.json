@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
+    "test": "mocha -r dotenv/config --timeout 10000 --exit",
     "dev": "nodemon ./bin/www"
   },
   "dependencies": {
@@ -13,11 +14,18 @@
     "dotenv": "^8.2.0",
     "express": "^4.16.4",
     "express-session": "^1.17.1",
+    "express-validator": "^6.9.2",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "mysql": "^2.18.1",
     "node-sass-middleware": "0.11.0",
     "nodemon": "^2.0.7",
-    "pug": "2.0.0-beta11"
+    "pug": "2.0.4"
+  },
+  "devDependencies": {
+    "chai": "^4.3.0",
+    "mocha": "^8.3.0",
+    "nodemon": "^2.0.7",
+    "supertest": "^6.1.3"
   }
 }
