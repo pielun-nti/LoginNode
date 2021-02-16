@@ -3,13 +3,10 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const { query } = require('../models/db');
 
-/* GET login form */
 router.get('/', function(req, res, next) {
-  // res.send('respond with a resource');
   res.render('login', {title: 'Login'});
 });
 
-/* GET skapa en hash */
 router.get('/kryptan/:pwd', function(req, res, next) {
 
   const myPlaintextPassword = req.params.pwd;
