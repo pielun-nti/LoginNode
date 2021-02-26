@@ -46,7 +46,7 @@ describe('/login', () => {
       request.post('/login')
         .type('form')
         .send({username: '', password: ''})
-        .expect(200)
+        .expect(401)
         .end((err, res) => {
           if (err) throw err;
           expect(res.text).to.contain('Username or password is invalid');

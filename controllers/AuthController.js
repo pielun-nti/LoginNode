@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 module.exports.store = async function(req, res, next) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.render('login',{ username: req.body.username, errors: errors.array()});
+    return res.status(401).render('login',{ username: req.body.username, errors: errors.array()});
   }
   const username = req.body.username;
   const password = req.body.password;
@@ -21,11 +21,11 @@ module.exports.store = async function(req, res, next) {
           req.session.username = username;
           res.redirect('/home');
         } else {
-          res.render('login',{ username: req.body.username, errors: 'Wrong username or password!'});
+          res.status(401).render('login',{ username: req.body.username, errors: 'Wrong username or password!'});
         }
       });
     } else {
-      res.render('login',{ username: req.body.username, errors: 'Wrong username or password!'});
+      res.status(401).render('login',{ username: req.body.username, errors: 'Wrong username or password!'});
     }
   } catch (e) {
     next(e);
@@ -48,13 +48,3 @@ module.exports.destroy = async function(req, res, next) {
 };
 
 
-/*
-Verb	URI	Action	Route Name
-GET	/photos	index	photos.index
-GET	/photos/create	create	photos.create
-POST	/photos	store	photos.store
-GET	/photos/{photo}	show	photos.show
-GET	/photos/{photo}/edit	edit	photos.edit
-PUT/PATCH	/photos/{photo}	update	photos.update
-DELETE	/photos/{photo}	destroy	photos.destroy
-*/
