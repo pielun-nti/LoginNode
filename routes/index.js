@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET topsekret page. */
-router.get('/topsecret', function(req, res, next) {
+router.get('/home', function(req, res, next) {
   if (req.session.loggedin) {
     res.send('Du är inloggad.');
   } else {

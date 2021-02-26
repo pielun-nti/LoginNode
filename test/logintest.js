@@ -33,7 +33,7 @@ describe('/login', () => {
     it('should sign in user provided it has a correct request body', (done) => {
       request.post('/login')
         .type('form')
-        .send({username: 'pierre', password: 'Secret123'})
+        .send({username: process.env.TEST_USER, password: process.env.TEST_PASS})
         .expect(302)
         .expect('Location', '/home')
         .end((err, res) => {
@@ -46,7 +46,7 @@ describe('/login', () => {
       request.post('/login')
         .type('form')
         .send({username: '', password: ''})
-        .expect(200)
+        .expect(401)
         .end((err, res) => {
           if (err) throw err;
           expect(res.text).to.contain('Username or password is invalid');
@@ -56,10 +56,10 @@ describe('/login', () => {
   });
 });
 
-describe('/topsecret', () => {
+describe('/home', () => {
   describe('GET /', () => {
     it('should return OK status', () => {
-      request.get('/topsecret')
+      request.get('/home')
         .expect(200)
         .end((err, res) => {
           if (err) throw err;
@@ -67,7 +67,7 @@ describe('/topsecret', () => {
     });
 
     it('should return message on rendering', () => {
-      request.get('/topsecret')
+      request.get('/home')
         .end((err, res) => {
           if (err) throw err;
           expect(res.text).to.contain('Please login to view this page!');
