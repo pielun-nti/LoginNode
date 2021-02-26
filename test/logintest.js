@@ -33,7 +33,7 @@ describe('/login', () => {
     it('should sign in user provided it has a correct request body', (done) => {
       request.post('/login')
         .type('form')
-        .send({username: 'pierre', password: 'Secret123'})
+        .send({username: process.env.TEST_USER, password: process.env.TEST_PASS})
         .expect(302)
         .expect('Location', '/home')
         .end((err, res) => {
